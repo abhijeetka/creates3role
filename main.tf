@@ -94,3 +94,6 @@ variable "role_name" {
   default = "s3-grant-all-role"
 }
 
+variable "bucket_name" {
+  default = ""
+}
