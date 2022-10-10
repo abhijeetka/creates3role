@@ -25,7 +25,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket  = "calibo-test-domain"
+    bucket  = "terraform-global-state-techstack-acc"
     region  = "us-east-1"
     encrypt = true
     key     = "tf-awss3-bucket-role/terraform.tfstate"
@@ -46,7 +46,7 @@ resource "aws_iam_policy" "aws-s3-policy" {
         "Principal": "",
         "Action": [
           "s3:GetObject",
-          "s3:GetObjectVersion"
+          "s3:GetObjectVersion",
           "s3:List*"
         ],
         "Resource": [
