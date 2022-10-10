@@ -59,6 +59,23 @@ resource "aws_iam_policy" "aws-s3-policy" {
 
 resource "aws_iam_role" "s3-read-all" {
   name = var.role_name
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  tags = {
+    tag-key = "tag-value"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "attach-policy" {
